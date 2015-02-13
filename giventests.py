@@ -13,7 +13,7 @@ class GivenTests(unittest.TestCase):
             "chris"
           ]
         }
-        expect = json.dumps(expect)
+        expect = json.dumps(expect, indent=2, separators=(',', ': '))
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
@@ -26,7 +26,7 @@ class GivenTests(unittest.TestCase):
             "coffee"
           ]
         }
-        expect = json.dumps(expect)
+        expect = json.dumps(expect, indent=2, separators=(',', ': '))
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
@@ -41,7 +41,7 @@ class GivenTests(unittest.TestCase):
             }
           ]
         }
-        expect = json.dumps(expect)
+        expect = json.dumps(expect, indent=2, separators=(',', ': '))
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
@@ -63,7 +63,7 @@ class GivenTests(unittest.TestCase):
             }
           ]
         }
-        expect = json.dumps(expect)
+        expect = json.dumps(expect, indent=2, separators=(',', ': '))
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 

@@ -38,7 +38,7 @@ def parse(msg):
     if links:
         contents['links'] = links
 
-    return json.dumps(contents)
+    return json.dumps(contents, indent=2, separators=(',', ': '))
 
 if __name__ == '__main__':
     msgs = [
