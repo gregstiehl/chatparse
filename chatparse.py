@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import html.parser
+import html
 import json
 import re
 import urllib.request
@@ -33,8 +33,7 @@ def parse(msg):
             continue
         title = re_title.search(page.decode())
         if title:
-            h = html.parser.HTMLParser()
-            title = h.unescape(title.group(1))
+            title = html.unescape(title.group(1))
         links.append({'url': link, 'title': title})
     if links:
         contents['links'] = links
