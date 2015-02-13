@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import chatparse
-import json
 import unittest
 
 class GivenTests(unittest.TestCase):
@@ -13,7 +12,6 @@ class GivenTests(unittest.TestCase):
             "chris"
           ]
         }
-        expect = json.dumps(expect, indent=2, separators=(',', ': '))
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
@@ -26,7 +24,6 @@ class GivenTests(unittest.TestCase):
             "coffee"
           ]
         }
-        expect = json.dumps(expect, indent=2, separators=(',', ': '))
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
@@ -41,7 +38,6 @@ class GivenTests(unittest.TestCase):
             }
           ]
         }
-        expect = json.dumps(expect, indent=2, separators=(',', ': '))
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
@@ -63,7 +59,6 @@ class GivenTests(unittest.TestCase):
             }
           ]
         }
-        expect = json.dumps(expect, indent=2, separators=(',', ': '))
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
