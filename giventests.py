@@ -55,7 +55,7 @@ class GivenTests(unittest.TestCase):
           "links": [
             {
               "url": "https://twitter.com/jdorfman/status/430511497475670016",
-              "title": "Twitter / jdorfman: nice @littlebigdetail from ..."
+              "title": 'Justin Dorfman on Twitter: "nice @littlebigdetail from @HipChat (shows hex colors when pasted in chat). http://t.co/7cI6Gjy5pq"'
             }
           ]
         }

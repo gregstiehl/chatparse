@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
+import html.parser
 import re
 import urllib.request
-
 
 re_mentions = re.compile('(?<=@)\w+')
 re_emoticons = re.compile('\((\w+)\)')
@@ -28,7 +28,8 @@ def parse(msg):
         if page:
             title = re_title.search(page.decode())
             if title:
-                title = title.group(1)
+                h = html.parser.HTMLParser()
+                title = h.unescape(title.group(1))
             good_urls.append({'url': link, 'title': title})
     if good_urls:
         contents['links'] = good_urls
