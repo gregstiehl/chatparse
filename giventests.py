@@ -34,7 +34,7 @@ class GivenTests(unittest.TestCase):
           "links": [
             {
               "url": "http://www.nbcolympics.com",
-              "title": "NBC Olympics | 2014 NBC Olympics in Sochi Russia"
+              "title": "NBC Olympics | Home of the 2016 Olympic Games in Rio",
             }
           ]
         }
