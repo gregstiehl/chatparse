@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import html.parser
+import json
 import re
 import urllib.request
 
@@ -34,8 +35,16 @@ def parse(msg):
     if good_urls:
         contents['links'] = good_urls
 
-    return contents
+    return json.dumps(contents)
 
 if __name__ == '__main__':
-    result = parse('@test@1 @greg @aaa (smile) https://stiehl.com http://www.nbcolympics.com')
-    print(result)
+    msgs = [
+        '@chris you around?',
+        'Good morning! (megusta) (coffee)',
+        'Olympics are starting soon; http://www.nbcolympics.com',
+        '@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016',
+    ]
+
+    for msg in msgs:
+        print('Input:', msg)
+        print('Return (string):\n', parse(msg))
