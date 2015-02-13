@@ -12,28 +12,32 @@ re_title = re.compile('<title>(.*?)</title>', re.IGNORECASE|re.DOTALL)
 
 def parse(msg):
     contents = {}
+    # look for @user mentions
     mentions = re_mentions.findall(msg)
     if mentions:
         contents['mentions'] = mentions
+
+    # look for (emoticon)
     emoticons = re_emoticons.findall(msg)
     if emoticons:
         contents['emoticons'] = emoticons
+
+    # look for http://link.com and read page for title
     urls = re_urls.findall(msg)
-    good_urls = []
+    links = []
     for link in urls:
         try:
             with urllib.request.urlopen(link) as h:
                 page = h.read()
         except:
-            page = None
-        if page:
-            title = re_title.search(page.decode())
-            if title:
-                h = html.parser.HTMLParser()
-                title = h.unescape(title.group(1))
-            good_urls.append({'url': link, 'title': title})
-    if good_urls:
-        contents['links'] = good_urls
+            continue
+        title = re_title.search(page.decode())
+        if title:
+            h = html.parser.HTMLParser()
+            title = h.unescape(title.group(1))
+        links.append({'url': link, 'title': title})
+    if links:
+        contents['links'] = links
 
     return json.dumps(contents)
 
