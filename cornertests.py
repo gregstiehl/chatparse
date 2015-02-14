@@ -4,8 +4,15 @@ import chatparse
 import unittest
 
 class CornerTests(unittest.TestCase):
+    def test_email(self):
+        '''test email to make sure it is not a mention'''
+        msg = "user@example.com"
+        expect = {}
+        result = chatparse.parse(msg)
+        self.assertEqual(expect, result)
+
     def test_userurl(self):
-        '''test for @user in url'''
+        '''test for user@ in url'''
         msg = "http://user@example.com"
         expect = {
           "links": [
@@ -15,6 +22,13 @@ class CornerTests(unittest.TestCase):
             }
           ]
         }
+        result = chatparse.parse(msg)
+        self.assertEqual(expect, result)
+
+    def test_nonexisturl(self):
+        '''do not include links to unknown URLs'''
+        msg = "http://site-does-not-exist.com"
+        expect = {}
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
