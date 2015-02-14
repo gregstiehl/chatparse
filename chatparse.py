@@ -5,6 +5,12 @@ import json
 import re
 import urllib.request
 
+# regex searches for parsing (in global space so they are only compiled once)
+re_mentions = re.compile('(?<=@)\w+')
+re_emoticons = re.compile('\((\w+)\)')
+re_urls = re.compile('(https?://[^\s]+)')
+re_title = re.compile('<title>(.*?)</title>', re.IGNORECASE|re.DOTALL)
+
 def url_title(url):
     try:
         with urllib.request.urlopen(url) as h:
@@ -15,12 +21,6 @@ def url_title(url):
     if title:
         title = html.unescape(title.group(1))
     return url, title
-
-# regex searches for parsing (in global space so they are only compiled once)
-re_mentions = re.compile('(?<=@)\w+')
-re_emoticons = re.compile('\((\w+)\)')
-re_urls = re.compile('(https?://[^\s]+)')
-re_title = re.compile('<title>(.*?)</title>', re.IGNORECASE|re.DOTALL)
 
 def parse(msg):
     contents = {}
@@ -35,9 +35,8 @@ def parse(msg):
         contents['emoticons'] = emoticons
 
     # look for http://link.com and read page for title
-    urls = re_urls.findall(msg)
     links = []
-    for url in urls:
+    for url in re_urls.findall(msg):
         url, title = url_title(url)
         if url:
             links.append({'url': url, 'title': title})
