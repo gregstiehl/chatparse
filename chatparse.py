@@ -8,7 +8,7 @@ import urllib.request
 
 # regex searches for parsing (in global space so they are only compiled once)
 re_mentions = re.compile(r'(?<=^|(?<=[^a-zA-Z0-9-\.]))@([A-Za-z_]+[A-Za-z0-9_]+)')
-re_emoticons = re.compile('\((\w+)\)')
+re_emoticons = re.compile('\((\w{1,15})\)')
 re_urls = re.compile('(https?://[^\s]+)')
 re_title = re.compile('<title>(.*?)</title>', re.IGNORECASE|re.DOTALL)
 

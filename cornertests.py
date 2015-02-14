@@ -18,5 +18,12 @@ class CornerTests(unittest.TestCase):
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
+    def test_longemoticon(self):
+        '''test for emoticon bigger that 15 chars'''
+        msg = "(1234567890123456)"
+        expect = {}
+        result = chatparse.parse(msg)
+        self.assertEqual(expect, result)
+
 if __name__ == '__main__':
     unittest.main()
