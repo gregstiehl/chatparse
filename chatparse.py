@@ -24,6 +24,8 @@ def url_title(url):
     except UnicodeDecodeError:
         # XXX not dealing with webpage encoding, use BeautifulSoup for full support
         return url, None
+
+    # XXX: this is a cheesy solution: use BeautifulSoup instead
     title = re_title.search(page)
     if title:
         title = html.unescape(title.group(1))
