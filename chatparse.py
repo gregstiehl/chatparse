@@ -50,7 +50,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         msg = sys.argv[1]
         print('Input:', msg)
-        print('Return (string):\n', json.dumps(parse(msg), indent=2, separators=(',', ': ')))
+        print('Return (string):\n', json.dumps(parse(msg), indent=2, sort_keys=True, separators=(',', ': ')))
         exit(0)
         
     msgs = [
@@ -62,6 +62,6 @@ if __name__ == '__main__':
 
     for msg in msgs:
         print('Input:', msg)
-        print('Return (string):\n', json.dumps(parse(msg), indent=2, separators=(',', ': ')))
+        print('Return (string):\n', json.dumps(parse(msg), indent=2, sort_keys=True, separators=(',', ': ')))
 
     exit(0)
