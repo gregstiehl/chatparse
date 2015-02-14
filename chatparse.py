@@ -39,7 +39,6 @@ def parse(msg):
     links = []
     for url in urls:
         url, title = url_title(url)
-        print(url, title)
         if url:
             links.append({'url': url, 'title': title})
     if links:
