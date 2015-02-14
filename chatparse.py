@@ -13,6 +13,7 @@ re_urls = re.compile('(https?://[^\s]+)')
 re_title = re.compile('<title>(.*?)</title>', re.IGNORECASE|re.DOTALL)
 
 def url_title(url):
+    # letting urlopen be the URL validator
     try:
         with urllib.request.urlopen(url) as h:
             page = h.read()

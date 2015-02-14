@@ -11,20 +11,6 @@ class CornerTests(unittest.TestCase):
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
-    def test_userurl(self):
-        '''test for user@ in url'''
-        msg = "http://user@example.com"
-        expect = {
-          "links": [
-            {
-              "url": msg,
-              "title": None,
-            }
-          ]
-        }
-        result = chatparse.parse(msg)
-        self.assertEqual(expect, result)
-
     def test_nonexisturl(self):
         '''do not include links to unknown URLs'''
         msg = "http://site-does-not-exist.com"
