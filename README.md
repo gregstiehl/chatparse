@@ -1,11 +1,13 @@
 # chatparse
 
 Usage:
+<pre>
     ./chatparse.py - run the 4 test strings given
     ./chatparse.py "a sample message @greg" - dump the json for the string given
     ./giventests.py - run a test suite of given tests
     ./cornertests.py - run tests suite of some corner cases (that pass)
     ./failingtests.py - run tests that fail (left that wat for time consideration)
+</pre>
 
 Directions:
 
