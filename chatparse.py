@@ -19,7 +19,12 @@ def url_title(url):
             page = h.read()
     except:
         return None, None
-    title = re_title.search(page.decode())
+    try:
+        page = page.decode()
+    except UnicodeDecodeError:
+        # XXX not dealing with webpage encoding, use BeautifulSoup for full support
+        return url, None
+    title = re_title.search(page)
     if title:
         title = html.unescape(title.group(1))
     return url, title

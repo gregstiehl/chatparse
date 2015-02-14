@@ -18,5 +18,19 @@ class FailingTests(unittest.TestCase):
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
+    def test_decode_nonutf8(self):
+        '''test web page with non-utf8 encoding'''
+        msg = "http://stiehl.com"
+        expect = {
+            "links": [
+                {
+                    "title": "The Stiehl Home Page",
+                    "url": "http://stiehl.com"
+                }
+            ]
+        }
+        result = chatparse.parse(msg)
+        self.assertEqual(expect, result)
+
 if __name__ == '__main__':
     unittest.main()
