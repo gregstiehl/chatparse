@@ -4,6 +4,17 @@ import chatparse
 import unittest
 
 class CornerTests(unittest.TestCase):
+    def test_doublemention(self):
+        '''not sure what should happen, going with dropping bob'''
+        msg = "@billy@bob"
+        expect = {
+          "mentions": [
+            "billy"
+          ]
+        }
+        result = chatparse.parse(msg)
+        self.assertEqual(expect, result)
+
     def test_email(self):
         '''test email to make sure it is not a mention'''
         msg = "user@example.com"
