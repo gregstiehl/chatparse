@@ -18,10 +18,19 @@ class CornerTests(unittest.TestCase):
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
-    def test_longemoticon(self):
+    def test_toolongemoticon(self):
         '''test for emoticon bigger that 15 chars'''
         msg = "(1234567890123456)"
         expect = {}
+        result = chatparse.parse(msg)
+        self.assertEqual(expect, result)
+
+    def test_longemoticon(self):
+        '''test for emoticon bigger that 15 chars'''
+        msg = "(123456789012345)"
+        expect = {
+            "emoticons": [ "123456789012345" ]
+         }
         result = chatparse.parse(msg)
         self.assertEqual(expect, result)
 
