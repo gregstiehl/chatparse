@@ -3,6 +3,7 @@
 import html
 import json
 import re
+import sys
 import urllib.request
 
 # regex searches for parsing (in global space so they are only compiled once)
@@ -46,6 +47,12 @@ def parse(msg):
     return contents
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        msg = sys.argv[1]
+        print('Input:', msg)
+        print('Return (string):\n', json.dumps(parse(msg), indent=2, separators=(',', ': ')))
+        exit(0)
+        
     msgs = [
         '@chris you around?',
         'Good morning! (megusta) (coffee)',
@@ -56,3 +63,5 @@ if __name__ == '__main__':
     for msg in msgs:
         print('Input:', msg)
         print('Return (string):\n', json.dumps(parse(msg), indent=2, separators=(',', ': ')))
+
+    exit(0)
